@@ -1,17 +1,23 @@
 package me.dio.domain.model;
-
-
+import jakarta.persistence.*;
 import java.util.List;
 
+
+@Entity(name = "tb_user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+    @OneToOne(cascade = CascadeType.ALL)
     private Card card;
-    private List<Card> cards;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Feature> features;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
-
     public Long getId() {
         return id;
     }
@@ -44,12 +50,12 @@ public class User {
         this.card = card;
     }
 
-    public List<Card> getCards() {
-        return cards;
+    public List<Feature> getFeatures() {
+        return features;
     }
 
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
+    public void setFeatures(List<Feature> features) {
+        this.features = features;
     }
 
     public List<News> getNews() {
