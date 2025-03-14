@@ -7,8 +7,12 @@ Java Restful API criada para o Decola Tech 2025.
 ```mermaid
 
 classDiagram
-    class Usuario {
+    class User{
         +String name
+        +Account account
+        +Feature[] features
+        +Card card
+        News[] news
     }
     
     class Conta {
@@ -33,8 +37,8 @@ classDiagram
         +String description
     }
     
-    Usuario "1" *-- "1" Conta : possui
-    Usuario "1" *-- "N" Funcionalidade : tem *
-    Usuario "1" *-- "1" Cartao : possui
-    Usuario "1" *-- "N" Noticia : recebe
+    User "1" *-- "1" Conta : possui
+    User "1" *-- "N" Funcionalidade : tem *
+    User "1" *-- "1" Cartao : possui
+    User "1" *-- "N" Noticia : recebe
 ```
